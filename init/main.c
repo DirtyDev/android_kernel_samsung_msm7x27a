@@ -735,6 +735,7 @@ int __init_or_module do_one_initcall(initcall_t fn)
 	return ret;
 }
 
+        print_scheduler_version();
 
 extern initcall_t __initcall_start[], __initcall_end[], __early_initcall_end[];
 

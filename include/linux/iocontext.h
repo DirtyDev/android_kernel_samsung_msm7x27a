@@ -5,10 +5,17 @@
 #include <linux/radix-tree.h>
 #include <linux/rcupdate.h>
 
+struct cfq_queue;
+#ifdef CONFIG_IOSCHED_BFQ
+struct bfq_queue;
+#endif
 struct cfq_io_context {
 	void *key;
 
-	void *cfqq[2];
+	struct cfq_queue *cfqq[2];
+#ifdef CONFIG_IOSCHED_BFQ
+	struct bfq_queue *bfqq[2];
+#endif
 
 	struct io_context *ioc;
 

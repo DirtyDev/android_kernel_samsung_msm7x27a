@@ -2191,14 +2191,14 @@ static void bfq_changed_ioprio(struct io_context *ioc,
 		return;
 
 	spin_lock(&bfqd->eqm_lock);
-	bfqq = cic->cfqq[BLK_RW_ASYNC];
+	cic->bfqq[BLK_RW_ASYNC];
 	if (bfqq != NULL) {
 		bfqg = container_of(bfqq->entity.sched_data, struct bfq_group,
 				    sched_data);
 		new_bfqq = bfq_get_queue(bfqd, bfqg, BLK_RW_ASYNC, cic->ioc,
 					 GFP_ATOMIC);
 		if (new_bfqq != NULL) {
-			cic->cfqq[BLK_RW_ASYNC] = new_bfqq;
+			cic->bfqq[BLK_RW_ASYNC] = new_bfqq;
 			bfq_log_bfqq(bfqd, bfqq,
 				     "changed_ioprio: bfqq %p %d",
 				     bfqq, atomic_read(&bfqq->ref));
@@ -2206,7 +2206,7 @@ static void bfq_changed_ioprio(struct io_context *ioc,
 		}
 	}
 
-	bfqq = cic->cfqq[BLK_RW_SYNC];
+	bfqq = cic->bfqq[BLK_RW_SYNC];
 	spin_unlock(&bfqd->eqm_lock);
 	if (bfqq != NULL)
 		bfq_mark_bfqq_prio_changed(bfqq);

@@ -523,13 +523,13 @@ bfq_entity_service_tree(struct bfq_entity *entity)
 static inline struct bfq_queue *cic_to_bfqq(struct cfq_io_context *cic,
 					    int is_sync)
 {
-	return cic->cfqq[!!is_sync];
+	return cic->bfqq[!!is_sync];
 }
 
 static inline void cic_set_bfqq(struct cfq_io_context *cic,
 				struct bfq_queue *bfqq, int is_sync)
 {
-	cic->cfqq[!!is_sync] = bfqq;
+	cic->bfqq[!!is_sync] = bfqq;
 }
 
 static inline void call_for_each_cic(struct io_context *ioc,
