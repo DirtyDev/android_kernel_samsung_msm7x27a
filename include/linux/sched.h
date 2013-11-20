@@ -2871,3 +2871,5 @@ static inline unsigned long rlimit_max(unsigned int limit)
 }
 
 #endif /* __KERNEL__ */
+
+#endif /* _LINUX_SCHED_H */
